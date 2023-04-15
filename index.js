@@ -48,7 +48,7 @@ connection.connect(function(err){
 
 
   app.get('/', (req,res)=>{
-    res.send('aisuuuuuuuuuuuuuu!!');
+    res.send('Welcome to our food recipe website');
   });
 
 
