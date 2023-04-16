@@ -58,9 +58,9 @@ connection.connect(function(err){
     console.log(recipe);
     // after that data needs to be parsed and passed on to db.
 
-    const {RECIPE_TITLE, IMAGE_URL, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE} = req.body;
-    const sql = 'INSERT INTO ahesadb.T_RECIPES (RECIPE_TITLE, IMAGE_URL, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE) values(?,?,?,?,?)';
-    const values =[RECIPE_TITLE, IMAGE_URL, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE];
+    const {RECIPE_TITLE, IMAGE_URL, TIME_TAKEN,RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE} = req.body;
+    const sql = 'INSERT INTO ahesadb.T_RECIPES (RECIPE_TITLE, IMAGE_URL,TIME_TAKEN, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE) values(?,?,?,?,?,?)';
+    const values =[RECIPE_TITLE, IMAGE_URL, TIME_TAKEN,RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE];
     connection.query(sql, values, (err,results) =>{
       if(err) {
         //throw err; 
@@ -100,12 +100,12 @@ connection.connect(function(err){
     //######################################## UPDATE RECIPE ##################################################
     app.put('/updateRecipe/:id', (req,res)=>{
       const {id}= req.params;
-      const {RECIPE_TITLE, IMAGE_URL, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE} = req.body;
+      const {RECIPE_TITLE, IMAGE_URL,TIME_TAKEN, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE} = req.body;
       //console.log('UPDATE RECIPE HEADER ID::: '+ id);
       const sql = 'UPDATE ahesadb.T_RECIPES SET  RECIPE_TITLE=?, IMAGE_URL=?, RECIPE_PUBLISHER=?, SOURCE_URL=?, PUBLISHED_DATE=? WHERE RECIPE_ID='+id;
       //console.log(sql);
       
-      const values =[RECIPE_TITLE, IMAGE_URL, RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE];
+      const values =[RECIPE_TITLE, IMAGE_URL, TIME_TAKEN,RECIPE_PUBLISHER, SOURCE_URL, PUBLISHED_DATE];
 
       connection.query(sql, values, (err,results) =>{
         if(err) {
